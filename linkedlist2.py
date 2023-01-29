@@ -11,21 +11,32 @@ class LINKEDLIST:
         while(temp!= None):
             print(temp.data)
             temp = temp.next
-
+    def push_beg(self,data):
+        New_Node = NODE(data)
+        New_Node.next = self.head
+        self.head = New_Node
+    def push_end(self,data):
+        New_Node = NODE(data)
+        if self.head == None:
+            New_Node = self.head
+            return
+        temp = self.head
+        while(temp.next != None):
+            temp.next = temp
+        temp.next = New_Node
 
 
 my_list = LINKEDLIST()
 first = NODE(10)
 second = NODE(20)
 third = NODE(30)
-may_be = NODE(None)
 fouth = NODE(40)
 
 
 my_list.head = first
 first.next = second
 second.next = third
-third.next = may_be
-may_be.next = fouth
-
+third.next = fouth
+my_list.push_beg(60)
+my_list.push_end(100)
 my_list.print()
